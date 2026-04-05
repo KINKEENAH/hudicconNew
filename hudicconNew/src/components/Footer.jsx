@@ -1,60 +1,91 @@
-// import { scrollTo } from "../utils/scrollTo";
-
-// const navLinks = ["home", "about", "mission", "events", "contact"];
-
-// export default function Footer() {
-//   return (
-//     <footer style={{ borderTop: "1px solid rgba(200,170,100,0.15)", padding: "3rem 2rem" }}>
-//       <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1.5rem" }}>
-//         <div style={{ fontSize: "1.1rem", fontWeight: 700, letterSpacing: "0.15em", color: "#c8aa64" }}>HUDICCON</div>
-//         <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
-//           {navLinks.map(link => (
-//             <button key={link} onClick={() => scrollTo(link)} style={{
-//               background: "none", border: "none", cursor: "pointer",
-//               color: "#4a4840", fontSize: "0.7rem", letterSpacing: "0.15em",
-//               textTransform: "uppercase", fontFamily: "'Georgia', serif", transition: "color 0.2s",
-//             }}
-//             onMouseEnter={e => (e.target.style.color = "#c8aa64")}
-//             onMouseLeave={e => (e.target.style.color = "#4a4840")}
-//             >{link}</button>
-//           ))}
-//         </div>
-//         <p style={{ color: "#3a3830", fontSize: "0.72rem", letterSpacing: "0.08em" }}>© 2025 Hudiccon. All rights reserved.</p>
-//       </div>
-//     </footer>
-//   );
-// }
-
 import { scrollTo } from "../utils/scrollTo";
 
 const navLinks = ["home", "about", "mission", "events", "contact"];
 
+const socials = [
+  { label: "Facebook", href: "https://facebook.com/hudiccon" },
+  { label: "Instagram", href: "https://instagram.com/hudiccon" },
+  { label: "Twitter", href: "https://twitter.com/hudiccon" },
+  { label: "LinkedIn", href: "https://linkedin.com/company/hudiccon" },
+];
+
 export default function Footer() {
   return (
-    <footer className="border-t border-[rgba(200,170,100,0.15)] py-12 px-6">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
-
-        {/* Logo */}
-        <div className="text-gold text-lg font-bold tracking-[0.15em]">
-          HUDICCON
+    <footer className="border-t border-gold-dim py-16 px-6">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        {/* Logo & Tagline */}
+        <div>
+          <div className="text-gold text-lg font-bold tracking-[0.15em] mb-3">
+            HUDICCON
+          </div>
+          <p className="text-[#4a4840] text-xs leading-relaxed tracking-wide">
+            Human Development &amp; Community Connections. Building sustainable
+            futures together.
+          </p>
         </div>
 
-        {/* Links */}
-        <div className="flex flex-wrap justify-center gap-8">
-          {navLinks.map(link => (
-            <button
-              key={link}
-              onClick={() => scrollTo(link)}
-              className="bg-transparent border-none text-[#4a4840] hover:text-gold text-[0.7rem] tracking-[0.15em] uppercase cursor-pointer font-serif transition-colors duration-200"
-            >
-              {link}
-            </button>
-          ))}
+        {/* Quick Links */}
+        <div>
+          <p className="text-gold text-[0.65rem] tracking-[0.25em] uppercase mb-4">
+            Quick Links
+          </p>
+          <div className="flex flex-col gap-3">
+            {navLinks.map((link) => (
+              <button
+                key={link}
+                onClick={() => scrollTo(link)}
+                className="bg-transparent border-none text-[#4a4840] hover:text-gold text-[0.7rem] tracking-[0.15em] uppercase cursor-pointer font-serif transition-colors duration-200 text-left"
+              >
+                {link}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Copyright */}
+        {/* Contact Info */}
+        <div>
+          <p className="text-gold text-[0.65rem] tracking-[0.25em] uppercase mb-4">
+            Contact
+          </p>
+          <div className="flex flex-col gap-3 text-[#4a4840] text-xs tracking-wide leading-relaxed">
+            <p>📧 info@hudiccon.org</p>
+            <p>📞 +233 20 000 0000</p>
+            <p>
+              📍 123 Community Street
+              <br />
+              Kumasi, Ghana
+            </p>
+          </div>
+        </div>
+
+        {/* Social Media */}
+        <div>
+          <p className="text-gold text-[0.65rem] tracking-[0.25em] uppercase mb-4">
+            Follow Us
+          </p>
+          <div className="flex flex-col gap-3">
+            {socials.map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[#4a4840] hover:text-gold text-[0.7rem] tracking-[0.15em] uppercase transition-colors duration-200"
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="max-w-6xl mx-auto border-t border-[rgba(200,170,100,0.12)] pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-[#3a3830] text-xs tracking-wide">
           © 2025 Hudiccon. All rights reserved.
+        </p>
+        <p className="text-[#3a3830] text-xs tracking-wide">
+          Built with purpose. Driven by impact.
         </p>
       </div>
     </footer>

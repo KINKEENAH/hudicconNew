@@ -1,42 +1,27 @@
-// import useFadeIn from "../hooks/useFadeIn" 
-
-// export default function Contact() {
-//   const ref = useFadeIn();
-
-//   return (
-//     <section id="contact" ref={ref} style={{
-//       opacity: 0, transform: "translateY(40px)",
-//       transition: "opacity 0.7s ease, transform 0.7s ease",
-//       padding: "6rem 2rem",
-//       borderTop: "1px solid rgba(200,170,100,0.12)",
-//       textAlign: "center",
-//     }}>
-//       <div style={{ maxWidth: 560, margin: "0 auto" }}>
-//         <div style={{ fontSize: "0.68rem", letterSpacing: "0.3em", textTransform: "uppercase", color: "#c8aa64", marginBottom: "1rem" }}>
-//           Get In Touch
-//         </div>
-//         <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", fontWeight: 400, marginBottom: "1rem" }}>Join the Movement</h2>
-//         <div style={{ width: 48, height: 2, background: "#c8aa64", margin: "0 auto 1.5rem" }} />
-//         <p style={{ color: "#8a8278", lineHeight: 1.9, marginBottom: "2.5rem" }}>
-//           Ready to be part of something meaningful? Reach out and let's build lasting impact together.
-//         </p>
-//         <a href="mailto:info@hudiccon.org" style={{
-//           display: "inline-block", background: "#c8aa64", color: "#0a0a0f",
-//           padding: "1rem 3rem", fontSize: "0.82rem", letterSpacing: "0.12em",
-//           textTransform: "uppercase", textDecoration: "none", transition: "opacity 0.2s",
-//         }}
-//         onMouseEnter={e => (e.target.style.opacity = 0.85)}
-//         onMouseLeave={e => (e.target.style.opacity = 1)}
-//         >Contact Us</a>
-//       </div>
-//     </section>
-//   );
-// }
-
-import  useFadeIn  from "../hooks/useFadeIn";
+import { useState } from "react";
+import useFadeIn from "../hooks/useFadeIn";
+import { submitContact } from "../api/api";
 
 export default function Contact() {
   const ref = useFadeIn();
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [status, setStatus] = useState(null); // 'success' | 'error' | 'loading'
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      await submitContact(form);
+      setStatus("success");
+      setForm({ name: "", email: "", subject: "", message: "" });
+    } catch (err) {
+      setStatus("error");
+    }
+  };
 
   return (
     <section
@@ -56,16 +41,67 @@ export default function Contact() {
 
         <div className="w-12 h-0.5 bg-gold mx-auto mb-6" />
 
-        <p className="text-[#8a8278] leading-[1.9] mb-10">
+        <p className="text-muted leading-[1.9] mb-10">
           Ready to be part of something meaningful? Reach out and let's build lasting impact together.
         </p>
 
-        <a
-          href="mailto:info@hudiccon.org"
-          className="inline-block bg-gold text-dark px-12 py-4 text-sm tracking-widest uppercase no-underline hover:opacity-85 transition-opacity duration-200"
-        >
-          Contact Us
-        </a>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4 text-left">
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            value={form.name}
+            onChange={handleChange}
+            required
+            className="bg-transparent border border-[rgba(200,170,100,0.3)] text-[#f0ede6] placeholder-muted px-4 py-3 text-sm outline-none focus:border-gold transition-colors duration-200"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            value={form.email}
+            onChange={handleChange}
+            required
+            className="bg-transparent border border-[rgba(200,170,100,0.3)] text-[#f0ede6] placeholder-muted px-4 py-3 text-sm outline-none focus:border-gold transition-colors duration-200"
+          />
+          <input
+            type="text"
+            name="subject"
+            placeholder="Subject"
+            value={form.subject}
+            onChange={handleChange}
+            className="bg-transparent border border-[rgba(200,170,100,0.3)] text-[#f0ede6] placeholder-muted px-4 py-3 text-sm outline-none focus:border-gold transition-colors duration-200"
+          />
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            value={form.message}
+            onChange={handleChange}
+            required
+            rows={5}
+            className="bg-transparent border border-[rgba(200,170,100,0.3)] text-[#f0ede6] placeholder-muted px-4 py-3 text-sm outline-none focus:border-gold transition-colors duration-200 resize-none"
+          />
+
+          <button
+            type="submit"
+            disabled={status === "loading"}
+            className="bg-gold text-dark px-12 py-4 text-sm tracking-widest uppercase hover:opacity-85 transition-opacity duration-200 disabled:opacity-50"
+          >
+            {status === "loading" ? "Sending..." : "Send Message"}
+          </button>
+
+          {status === "success" && (
+            <p className="text-center text-sm text-green-400 mt-2">
+              Message sent! We'll get back to you soon.
+            </p>
+          )}
+          {status === "error" && (
+            <p className="text-center text-sm text-red-400 mt-2">
+              Something went wrong. Please try again.
+            </p>
+          )}
+        </form>
+
       </div>
     </section>
   );
