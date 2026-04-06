@@ -1,7 +1,15 @@
-  
-import useFadeIn  from "../hooks/useFadeIn";
+import useFadeIn from "../hooks/useFadeIn";
 
-export default function SplitSection({ id, imgSrc, imgAlt, tag, title, body, reverse, cta }) {
+export default function SplitSection({
+  id,
+  imgSrc,
+  imgAlt,
+  tag,
+  title,
+  body,
+  reverse,
+  cta,
+}) {
   const ref = useFadeIn();
 
   return (

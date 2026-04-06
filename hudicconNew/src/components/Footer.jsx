@@ -19,7 +19,7 @@ export default function Footer() {
             HUDICCON
           </div>
           <p className="text-[#4a4840] text-xs leading-relaxed tracking-wide">
-            Human Development &amp; Community Connections. Building sustainable
+            Humananitarian Development Concern center. Building sustainable
             futures together.
           </p>
         </div>
