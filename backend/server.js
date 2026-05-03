@@ -10,7 +10,10 @@ const newsletterRoutes = require('./routes/newsletterRoutes');
 const app = express();
 
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: [
+     "http://localhost:5173",
+    "https://effervescent-sunburst-046e9c.netlify.app"
+  ]
 }));
 app.use(express.json());
 
