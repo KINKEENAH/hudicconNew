@@ -1,3 +1,7 @@
+const express = require("express");
+const router = express.Router();
+const pool = require("../config/db");
+
 // POST /api/contact
 router.post("/", async (req, res) => {
   const { name, email, subject, message } = req.body;
