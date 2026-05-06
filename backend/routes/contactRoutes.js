@@ -1,5 +1,6 @@
-const express = require("express");
-const router = express.Router();
+// const express = require("express");
+// const router = express.Router();
+const router = require('express').Router();
 const pool = require("../config/db");
 
 // POST /api/contact
@@ -51,3 +52,4 @@ router.post("/", async (req, res) => {
     res.status(500).json({ error: "Failed to send message." });
   }
 });
+module.exports = router;

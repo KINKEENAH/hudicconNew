@@ -7,6 +7,11 @@ const eventsRoutes = require('./routes/eventsRoutes');
 const statsRoutes = require('./routes/statsRoutes');
 const newsletterRoutes = require('./routes/newsletterRoutes');
 
+console.log("contactRoutes:", contactRoutes);
+console.log("eventsRoutes:", eventsRoutes);
+console.log("statsRoutes:", statsRoutes);
+console.log("newsletterRoutes:", newsletterRoutes);
+
 const app = express();
 
 app.use(cors({
@@ -30,3 +35,8 @@ const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+
+console.log('contactRoutes:', contactRoutes);
+console.log('eventsRoutes:', eventsRoutes);
+console.log('statsRoutes:', statsRoutes);
+console.log('newsletterRoutes:', newsletterRoutes);
