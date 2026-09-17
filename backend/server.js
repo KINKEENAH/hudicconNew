@@ -17,7 +17,7 @@ const app = express();
 app.use(cors({
   origin: [
      "http://localhost:5173",
-    "https://effervescent-sunburst-046e9c.netlify.app"
+      process.env.CLIENT_URL
   ]
 }));
 app.use(express.json());
