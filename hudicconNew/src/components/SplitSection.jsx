@@ -54,14 +54,21 @@ export default function SplitSection({
 
         <p className="text-muted leading-[1.9] text-base max-w-md">{body}</p>
 
-        {cta && (
+        {cta && (cta.onClick ? (
+          <button
+            onClick={cta.onClick}
+            className="mt-8 self-start border border-gold text-gold hover:bg-gold hover:text-dark px-7 py-3 text-xs tracking-widest uppercase transition-all duration-200"
+          >
+            {cta.label} →
+          </button>
+        ) : (
           <a
             href={cta.href}
             className="mt-8 self-start border border-gold text-gold hover:bg-gold hover:text-dark px-7 py-3 text-xs tracking-widest uppercase no-underline transition-all duration-200"
           >
             {cta.label} →
           </a>
-        )}
+        ))}
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import { scrollTo } from "../utils/scrollTo";
 
-const navLinks = ["home", "about", "mission", "events", "contact"];
+const navLinks = ["home", "about", "mission", "programs", "events", "contact"];
 
 const socials = [
   { label: "Facebook", href: "https://facebook.com/hudiccon" },
@@ -19,7 +19,7 @@ export default function Footer() {
             HUDICCON
           </div>
           <p className="text-[#4a4840] text-xs leading-relaxed tracking-wide">
-            Humananitarian Development Concern center. Building sustainable
+            Humanitarian Development Concern Centre. Building sustainable
             futures together.
           </p>
         </div>

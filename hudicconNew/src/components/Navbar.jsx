@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { scrollTo } from "../utils/scrollTo";
 
-const navLinks = ["home", "about", "mission", "events", "contact"];
+const navLinks = ["home", "about", "mission", "programs", "events", "contact"];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
