@@ -48,12 +48,12 @@ export default function Footer() {
             Contact
           </p>
           <div className="flex flex-col gap-3 text-[#4a4840] text-xs tracking-wide leading-relaxed">
-            <p>📧 info@hudiccon.org</p>
-            <p>📞 +233 20 000 0000</p>
+            <p>📧 im266794@gmail.com</p>
+            <p>📞 +233 0555010299</p>
             <p>
-              📍 123 Community Street
+              📍 Nsuase
               <br />
-              Kumasi, Ghana
+              Kwahu South, Ghana
             </p>
           </div>
         </div>
