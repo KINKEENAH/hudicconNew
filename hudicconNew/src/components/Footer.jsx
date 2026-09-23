@@ -4,7 +4,7 @@ const navLinks = ["home", "about", "mission", "programs", "events", "contact"];
 
 const socials = [
   { label: "Facebook", href: "https://facebook.com/hudiccon" },
-  { label: "Instagram", href: "https://instagram.com/hudiccon" },
+  { label: "Tiktok", href: "https://tiktok.com/hudiccon" },
   { label: "Twitter", href: "https://twitter.com/hudiccon" },
   { label: "LinkedIn", href: "https://linkedin.com/company/hudiccon" },
 ];
